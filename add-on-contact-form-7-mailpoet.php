@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name:       Add-on Contact Form 7 - Mailpoet 3
+ * Plugin Name:       Add-on Contact Form 7 - Mailpoet 3 - Accessibility fixes
  * Description:       Add a MailPoet 3 signup field to your Contact Form 7 forms.
- * Version:           1.3.20
- * Author:            Tikweb
- * Author URI:        http://www.tikweb.com/
+ * Version:           1.3.20-a11y.1
+ * Author:            Tikweb, modifications by Julie Moynat
+ * Author URI:        https://github.com/juliemoynat/fork-add-on-contact-form-7-mailpoet/releases
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       add-on-contact-form-7-mailpoet
@@ -115,7 +115,12 @@ if ( ! is_plugin_active( 'mailpoet/mailpoet.php' ) ) {
  * Check Contact Form 7 active
  * Prerequisite
  */
-if ( ! is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
+/**
+ * #cf7-a11y-start
+ * Change CF7 folder to make the add-on compatible with CF7-a11y fork
+ */
+if ( ! is_plugin_active( 'contact-form-7-a11y/wp-contact-form-7.php' ) ) {
+/** #cf7-a11y-end */
 	add_action(
 		'admin_notices',
 		function() {

@@ -98,9 +98,18 @@ class MailpoetSubscriptionUnsubscribe {
 
 		<span class="wpcf7-form-control-wrap <?php echo $tag->name; ?>">
 			<span class="<?php echo $controls_class; ?>">
-				<label>
-					<input type="checkbox" name="unsubscribe-email" <?php echo $attributes; ?> /> <span class="wpcf7-list-value"><?php echo $data_label; ?></span><br/>
+			<?php
+			/**
+			 * #cf7-a11y-start
+			 * - Add `for` attribute for the `label`
+			 * - Remove `br` at the end of the `span`
+			 * - Remove space between field and label
+			 */
+			?>
+				<label for="<?php echo $atts['id']; ?>">
+					<input type="checkbox" name="unsubscribe-email" <?php echo $attributes; ?> /><span class="wpcf7-list-value"><?php echo $data_label; ?></span>
 				</label>
+			<?php /** #cf7-a11y-end */ ?>
 			</span>
 		</span>
 		<script>
