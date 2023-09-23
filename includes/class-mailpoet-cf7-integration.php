@@ -16,31 +16,51 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Describe what the code snippet does so you can remember later on.
 
+/**
+ * #cf7-a11y-start
+ * Remove jQuery
+ */
 // Adding a jquery CDN
-add_action( 'wp_enqueue_scripts', 'register_jquery' );
-function register_jquery() {
-	if ( ! wp_script_is( 'jquery' ) ) {
-		wp_enqueue_script( 'jquery' );
-	}
-}
+// add_action( 'wp_enqueue_scripts', 'register_jquery' );
+// function register_jquery() {
+// 	if ( ! wp_script_is( 'jquery' ) ) {
+// 		wp_enqueue_script( 'jquery' );
+// 	}
+// }
+/** #cf7-a11y-end */
+
 // Adding a jquery code to the footer. This code fetch the list ids based on the checked values in the checkbox
 add_action( 'wp_footer', 'fetchedKeyVal' );
 function fetchedKeyVal() {
 	?>
 	<script>
-		jQuery(document).ready(function($) {
-			var $checkboxes;
-			function storekey() {
-				var keysVal = $checkboxes.map(function() {
-					if(this.checked) return $(this).attr('data-key');
-				}).get().join(',');
-				// console.log(keysVal)
-				$("input[name='fieldVal']").val(keysVal);
-			}
-			$(function() {
-				$checkboxes = $("input[class='listCheckbox']").change(storekey);
+		/**
+		 * #cf7-a11y-start
+		 * Convert the jQuery script into Vanilla to prevent jQuery conflict
+		 */
+		window.addEventListener('DOMContentLoaded', function () {
+			let checkboxes = document.querySelectorAll('input[class="listCheckbox"]');
+
+			checkboxes.forEach(checkbox => {
+				checkbox.addEventListener('change', function () {
+					let fieldVal = document.querySelector('input[name="fieldVal"]');
+					let fieldValValueTokens = [];
+
+					if (fieldVal.value != '') {
+						fieldValValueTokens = fieldVal.value.split(',');
+					}
+
+					if (this.checked) {
+						fieldValValueTokens.push(this.dataset.key);
+					} else {
+						fieldValValueTokens.splice(fieldValValueTokens.indexOf(this.dataset.key), 1)
+					}
+
+					fieldVal.value = fieldValValueTokens.join(',');
+				});
 			});
 		});
+		/** #cf7-a11y-end */
 	</script>
 	<?php
 };
@@ -122,12 +142,28 @@ if ( ! class_exists( 'MailPoet_CF7_Integration' ) ) {
 			$count_list_array = count( $list_array );
 			$mp_segments      = $this->mailpoet_segments_data( $list_array );
 
+			/**
+			 * #cf7-a11y-start
+			 * - Add `aria-required` attribute
+			 * - Add `aria-invalid` attribute
+			 * - Remove the ID from the list of attributes to make it unique later
+			 */
+			// Aria-required
+			if ( $tag->is_required() ) {
+				$required = 'true';
+			} else {
+				$required = 'false';
+			}
+
 			// Make ready all attributes
 			$atts = array(
 				'class' => $tag->get_class_option( $class ),
-				'id'    => $id,
+				// 'id'    => $id,
 				'name'  => $tag->name . '[]',
+				'aria-required' => $required,
+				'aria-invalid' => 'false'
 			);
+			/** #cf7-a11y-end */
 
 			if ( ! $tag->has_option( 'subscriber-choice' ) ) {
 				$atts['value'] = ( $list_array ) ? implode( ',', $list_array ) : '0';
@@ -144,65 +180,104 @@ if ( ! class_exists( 'MailPoet_CF7_Integration' ) ) {
 			<?php if ( count( $mp_segments ) > 1 && $tag->has_option( 'subscriber-choice' ) ) : ?>
 
 				<?php $key_cnt = array(); ?>
-				<span class="wpcf7-form-control-wrap <?php echo $tag->name; ?>">
-					<span class="<?php echo $controls_class; ?>">
-						<label class="wpcf7-list-label"><?php echo $label; ?><br/></label>
+
+				<?php
+				/**
+				 * #cf7-a11y-start
+				 * - With the last version of Contact Form 7, we need to use the `data-name` attribute around a field or a group of fields and not a class
+				 * - Transform the first `span` container into a `div`
+				 * - Transform the second `span` container into a `fieldset`
+				 * - Transform the first `label` into a `legend`
+				 * - Create a unique ID for each field
+				 * - Add `for` attribute for the `label`
+			 	 * - Remove `br` at the end of the `span`
+				 * - Add values in the hidden field only if checkboxes are checked by default
+				 */
+				?>
+				<div class="wpcf7-form-control-wrap" data-name="<?php echo $tag->name; ?>">
+					<fieldset class="<?php echo $controls_class; ?>">
+						<legend class="wpcf7-list-label"><?php echo $label; ?></legend>
 							<?php foreach ( $mp_segments as $key => $value ) : ?>
-								<label>
+								<?php
+								/* Get the ID and make it unique */
+								$atts_id = array(
+									'id'    => $id . '-' . wp_unique_id()
+								);
+
+								$attribute_id = wpcf7_format_atts( $atts_id );
+								?>
+
+								<label for="<?php echo $atts_id['id']; ?>">
 									<input class="listCheckbox" type="checkbox"
-									<?php echo $attributes; ?> value="<?php echo $value; ?>" data-key="<?php echo $key; ?>" 
+									<?php echo $attributes . $attribute_id; ?> value="<?php echo $value; ?>" data-key="<?php echo $key; ?>"
 									<?php
 										checked(
 											$tag->has_option( 'default:on' ),
 											true
 										);
 									?>
-										> <span class="wpcf7-list-value"><?php echo $value; ?></span><br/>
+										> <span class="wpcf7-list-value"><?php echo $value; ?></span>
 								</label>
 								<?php
 								$key_cnt[]          .= $key;
 								$comma_separated_key = implode( ',', $key_cnt );
 								?>
 							<?php endforeach; ?>
-						<input type="hidden" name="fieldVal" value="<?php echo $comma_separated_key; ?>">
-					</span>
+						<input type="hidden" name="fieldVal" value="<?php if($tag->has_option( 'default:on' )) { echo $comma_separated_key; } ?>">
+					</fieldset>
+					<?php /** #cf7-a11y-end */ ?>
 
 					<?php echo $validation_error; // Show validation error ?>
-				</span>
+				</div>
 			<?php else : ?>
-				<span class="wpcf7-form-control-wrap <?php echo $tag->name; ?>">
+			<?php
+			/**
+			 * #cf7-a11y-start
+			 * - With the last version of Contact Form 7, we need to use the `data-name` attribute around a field or a group of fields and not a class
+			 * - Add `for` attribute for the `label`
+			 * - Remove `br` at the end of the `span`
+			 * - Add `aria-required` attribute
+			 * - Add `aria-invalid` attribute
+			 * - Close the hidden `input` tag
+			 * - Add values in the hidden field only if checkboxes are checked by default
+			 */
+			?>
+				<span class="wpcf7-form-control-wrap" data-name="<?php echo $tag->name; ?>">
 			<span class="<?php echo $controls_class; ?>">
-				<label class="wpcf7-list-label">
-				<input type="checkbox"
-				name="<?php echo $tag->name . '[]'; ?>" value="
-										<?php
-										if ( is_array( $sagments ) ) :
-											$value_name = array();
-											$value_id   = array();
-											foreach ( $sagments as $sagment ) :
-												for ( $i = 0; $i < $count_list_array; $i++ ) {
-													if ( $list_array[ $i ] == $sagment['id'] ) {
-														$value_name[] .= $sagment['name'];
-														$value_id[]   .= $sagment['id'];
+				<label class="wpcf7-list-label" for="<?php echo $tag->get_id_option(); ?>">
+					<input type="checkbox"
+					name="<?php echo $tag->name . '[]'; ?>" value="
+											<?php
+											if ( is_array( $sagments ) ) :
+												$value_name = array();
+												$value_id   = array();
+												foreach ( $sagments as $sagment ) :
+													for ( $i = 0; $i < $count_list_array; $i++ ) {
+														if ( $list_array[ $i ] == $sagment['id'] ) {
+															$value_name[] .= $sagment['name'];
+															$value_id[]   .= $sagment['id'];
+														}
 													}
-												}
-											endforeach;
-											$comma_separated_val = implode( ',', $value_name );
-											echo $comma_separated_val;
-				endif;
-										?>
-				"
-				id="<?php echo $tag->get_id_option(); ?>" class="<?php echo $tag->get_class_option( $class ); ?>"
-				<?php checked( $tag->has_option( 'default:on' ), true ); ?>
-				/><?php echo $label; ?>
+												endforeach;
+												$comma_separated_val = implode( ',', $value_name );
+												echo $comma_separated_val;
+					endif;
+											?>
+					"
+					id="<?php echo $tag->get_id_option(); ?>" class="<?php echo $tag->get_class_option( $class ); ?>"
+					<?php checked( $tag->has_option( 'default:on' ), true ); ?>
+					aria-required="<?php if ( $tag->is_required() ) { echo 'true'; }else{ echo 'false'; } ?>" aria-invalid="false"
+					/><?php echo $label; ?>
 					<input type="hidden" name="fieldVal"  value="
 					<?php
-					$comma_separated_key = implode( ',', $value_id );
-					echo $comma_separated_key;
+					if($tag->has_option( 'default:on' )) {
+						$comma_separated_key = implode( ',', $value_id );
+						echo $comma_separated_key;
+					}
 					?>
-					"
+					">
 				</label>
-				<br/>
+				<?php /** #cf7-a11y-end */ ?>
 				</span>
 
 				</span>
