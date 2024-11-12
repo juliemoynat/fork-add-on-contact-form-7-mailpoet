@@ -1,101 +1,126 @@
-=== Add-on Contact Form 7 - MailPoet 3 ===
+=== Add-on Contact Form 7 – MailPoet 3 ===
 Contributors: kasperta
 Tags: mailpoet, contact form 7, cf7, form, forms, contact form, wysija, mail, email, e-mail, extension, add-on, newsletter, newsletters, subscription, checkout, list, lists, double opt-in
-Donate link: http://www.tikweb.dk/donate/
+Donate link: http://www.tikweb.com/donate/
 Requires at least: 5.3
-Tested up to: 6.1
+Tested up to: 6.5.4
 Requires PHP: 7.2
-Stable tag: 1.3.20
+Stable tag: 1.3.21
 
 Add a MailPoet 3 signup field to your Contact Form 7 forms.
 
 == Description ==
 
-> #### Requirements
-> [MailPoet 3](https://wordpress.org/plugins/mailpoet/)<br />
-> [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
+## 🌟 Introducing Add-on Contact Form 7 – MailPoet 3 🌟
 
-MailPoet is a free newsletter and post notification plugin for WordPress that makes it really simple to send out email newsletters to your subscription lists. This plugin integrates Contact Form 7 with MailPoet by providing an option for your customers to signup for your newsletter lists while submitting a form.
+**🎉 Boost Your Newsletter Game with One Click! 🎉**
 
-Please see the extensive installation / setup instructions to set up your form correctly.
+Looking to level up your newsletter game and supercharge lead generation? 🚀 Say hello to Tikweb's powerful Add-On plugin, designed to revolutionize the way you acquire subscribers and capture leads through contact forms! 💥 Let's explore the captivating features of this remarkable plugin that will skyrocket your audience engagement and conversion rates! 💯
 
-= Features =
+**Empowering Features:**
 
-* Allow your users to sign up for a Mailpoet newsletter list using a Contact Form 7 form
-* You can capture first name, last name, and (of course) email
-* You can signup users to as many lists as you like
-* You can set up the form to opt in or opt out
-* Ability to add mailpoet custom field
+📋 **Seamless Integration:** Effortlessly allow your users to subscribe to Mailpoet newsletter lists directly from your Contact Form 7 forms! Enable a frictionless sign-up experience, right when your visitors interact with your website.
 
-= How to integrate mailpoet custom field in Contact Form 7 =
+✉️ **Capture User Information:** Gather essential user details, including first names, last names, and email addresses. Ensure personalized and accurate communication, establishing a strong connection with your audience.
 
-1. First edit any Mailpoet form and add a custom field
-https://i.imgur.com/vTnuklV.png
+📝 **Multiple List Support:** Sky's the limit! Sign up users to as many Mailpoet lists as you desire, effortlessly segmenting your audience and delivering tailor-made content to different groups.
 
-2. Now create/edit contact form 7 form and click "Mailpoet custom field"
-https://i.imgur.com/9wIp79t.png
+🔀 **Opt-in or Opt-out:** Empower your users with choices! Configure the form to provide options for opt-in or opt-out, ensuring compliance with privacy regulations and giving users full control over their subscriptions.
 
-3. Copy the mailpoet custom field id
-https://i.imgur.com/fHrpedY.png
+🔧 **Custom Fields:** Take your forms to the next level with Mailpoet custom fields! Capture additional information beyond the standard fields, allowing you to gather specific details and deliver personalized experiences.
 
-4. Now create any field in contact form 7 same as the custom field that you created in mailpoet. In "Name" field, put the mailpoet�s custom field id number which you copied in earlier step.
-https://i.imgur.com/HpuufxY.png
+**🔧 Plugin pre-requisites:**
 
+1. [MailPoet](https://wordpress.org/plugins/mailpoet/)
+2. [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
 
-= Form Setup =
+💻 **Easy Installation and Activation:** 💻
 
-After installing & activating the plugin it's time to set up your form.
+🚀 Step 1: Locate the Plugins tab in your WordPress dashboard.
 
-1. Click on Contact in the WordPress admin
-2. Edit an existing form or create a new one by clicking on Add New in the WordPress admin menu
-3. Add your fields
-4. Add a text field named `your-name`
-5. Add an email field named `your-email`
-6. Add a MailPoet Signup field named `mailpoetsignup`
-7. When you're adding the MailPoet Signup field you can select any number of lists you want the user to be assigned to
-8. You can also choose to make the user opt in or opt out
+🚀 Step 2: Install and activate both Mailpoet and Contact Form 7 plugins for optimal functionality.
 
-== <a name="how-to-translate"></a>How to translate? ==
+🚀 Step 3: Search for the Add-on Contact Form 7 – MailPoet 3 plugin in the Plugins tab, and with a single click, activate its powerful potential! 🚀🎉
 
-We use the official WordPress Polyglots translation team and online translation system - which is not very common among plugin authors, and therefore we would like to explain why this is both easier and better for all than the common .pot/.po/.mo files.
+📑 **Create Custom Lists:** 📑
 
-= Online web translation =
-To make it short, you simply use the online system at <https://translate.wordpress.org/projects/wp-plugins/add-on-contact-form-7-mailpoet> to translate both "Development" and "Development Readme" into your language. And when a translation editor have approved the translations, a language pack will automatically be generated for all websites using our plugin and the language you translated. No need to work with any files at all, WordPress will automatically load the translation, when it is approved by an editor.
+✨ Step 1: Access the Mailpoet tab and navigate to the Lists section.
 
-= .pot/.po/.mo files =
-If you need to have your own texts and translations, you can off course still use Poedit or a plugin like Loco Translate with your own .po files. You can export and download a translation to a .po file from
-<https://translate.wordpress.org/projects/wp-plugins/add-on-contact-form-7-mailpoet> -> Choose language -> Choose Development -> Export (at the bottom)
-If you add new translations, please consider using the import button at the same place, to import your .po file translations into the online system so everyone may benefit from your translations :-)
+✨ Step 2: Craft custom lists tailored to your unique requirements, like "Newsletter" and "Promotions."
 
-= Online web translation: Editors and approval =
-Everyone can edit and add translations for our plugin using the online system at <https://translate.wordpress.org/projects/wp-plugins/add-on-contact-form-7-mailpoet> - this only require that you are logged in with your wordpress.org user name. But only editors may approve translations. So after adding translations for a new language, you should apply to become the Project Translation Editor (PTE) for your language for our plugin, then you may approve your own translations.
+✨ Step 3: Generate as many lists as you need to manage and engage your subscribers effectively! 📝
 
-Only members of the WordPress Polyglots team can approve new PTEs, which they usually do pretty fast when you have added a full language of translations. To approve a new PTE, the polyglots team member must be a General Translation Editor (GTE) for the language, meaning one that have access to all plugins for the specific language, since the one approving you off course needs to be fluent in your language to be able to read your first translations and check that they are of good quality.
+⚙️ **Configure Contact Form:** ⚙️
 
-To become PTE, you simply request it at the Polyglots forum.
-We suggest you use the example below - exchange xx_XX with your locale (ex. da_DK for danish in Denmark) and XXXXX with your wordpress.org username (ex. mine is kasperta). If your language have several different locales, add an extra line with that locale.
-So copy and paste the text below to a new post at <https://make.wordpress.org/polyglots/> - and edit locale + user name, and soon you may approve your own translations :-)
----beginning of forum post---
-	Hello Polyglots, I have added translations for "Add-on WooCommerce - MailPoet 3" (&lt;a href="https://wordpress.org/plugins/add-on-contact-form-7-mailpoet/">Add-on WooCommerce - MailPoet 3/a>) and would like to become the Project Translation Editor (PTE) for my language.
-	Please add my WordPress.org user as Project Translation Editor (PTE) for the respective locales:
-	o #xx_XX - @XXXXX
-	If you have any questions, just comment here. Thank you!
-	#editor-requests
----end of forum post---
+⭐ Ensure smooth sailing for your forms with these simple steps:
 
-= Translations and editors =
+⭐ Add a new contact form under the Contact tab.
 
-See the current translation contributors and editors for our plugin for the different languages at:
-<https://translate.wordpress.org/projects/wp-plugins/add-on-contact-form-7-mailpoet/contributors>
+⭐ Don't forget to label the name field and the email field using dash-separated labels like "Your-Name" and "Your-Email."
 
-See the generated language packs at:
-<https://translate.wordpress.org/projects/wp-plugins/add-on-contact-form-7-mailpoet/language-packs>
+📝 **Mailpoet Signup:** 📝
 
-If the online system have not generated a language pack for your language, it is because:
+🎯 Step 1: Enable the "Required Field" checkbox for complete form submissions.
 
-1. Your texts are not approved, check if they are still in the "waiting" column. If they are, then check if there is an [editor](https://translate.wordpress.org/projects/wp-plugins/add-on-contact-form-7-mailpoet/contributors) for your language, if not, then request to become an editor.
-2. There are not enough texts translated, you need about 90% translated before a translation pack is generated.
-3. You have only translated the plugin strings and not the readme. You need above 90% for "Development" and "Development Readme" together, check the percentage of both columns for your language at <https://translate.wordpress.org/projects/wp-plugins/add-on-contact-form-7-mailpoet>
+🎯 Step 2: From the MailPoet list, select the specific MailPoet list you want to highlight on the contact form — making subscribing a breeze for your customers.
+
+🎯 Step 3: Optionally, pre-check the newsletter checkbox to streamline the subscription process even further.
+
+🔎 **Test the Plugin:** 🔎
+
+✨ Insert tags above the submit button to customize your form further.
+
+✨ Validate all fields by clicking "Mailpoet Signup" to ensure everything works seamlessly.
+
+✨ Enhance transparency and trust by inserting appropriate tags for Mailpoet Consent and Mailpoet Unsubscribe sections.
+
+📄 **Save and Name the Contact Form and Create a Dedicated Page:** 📄
+
+⭐ Save your contact form and give it a name of your choice, like "Contact Us Form."
+
+⭐ Create a page for your contact form, elegantly titled "Contact Us Page."
+
+⭐ Insert the Contact Form 7 block on the page, selecting the "Contact Us Form" you configured earlier.
+
+⭐ Publish the page to showcase a visually appealing and fully functional contact form.
+
+As users fill out the form with their name, email, subject, and message, they can easily subscribe to your "Newsletter" and "Promotions" by checking the corresponding checkboxes.
+
+📊 **Efficient Subscriber Management:** 📊
+
+✅ Click on "Mailpoet" and then "Subscribers" in the dashboard to access the Mailpoet subscribers section.
+
+✅ Conveniently manage and view your customers' email addresses and names stored within the newsletter and promotion mailing lists.
+
+✅ Unsubscribing is seamless; if users check the unsubscribe checkbox, they will be promptly removed from your mailing list.
+
+🔧 **Utilize Mailpoet Custom Fields:** 🔧
+
+💡 Access the Forms section within the Mailpoet tab.
+
+💡 Create a new blank form, click "Browse All," and select "Custom Fields" to gather specific information from users.
+
+💡 Integrate the custom field by copying the custom field ID from the Mailpoet custom field located under the Contact tab.
+
+💡 Now go to the WordPress dashboard, click on Mailpoet, click Subscribers, click on the user, scroll down, and there you will see the custom field data fetched from the contact form.
+
+🛍️💕 So why wait? Get Add-on Contact Form 7 – MailPoet 3 and unlock a world of possibilities! 🛍️💕
+
+If you have any questions or need further assistance, our support team is always available to help. 🙌📞 Feel free to reach out to us, and let's embark on this exciting journey together! 🚀🌟
+
+**🔌 Our other plugins:**
+
+➡️ Submit your MailPoet 3 newsletter as your customer's checkout from WooCommerce.
+Link: [Add-on WooCommerce – MailPoet 3 – WordPress plugin | WordPress.org](https://wordpress.org/plugins/add-on-woocommerce-mailpoet/)
+
+➡️ Easily switch between users and roles from the admin bar – add users or roles from a list or search by ID, username, email address, etc.
+Link: [Fast User Switching – WordPress plugin | WordPress.org](https://wordpress.org/plugins/fast-user-switching/)
+
+➡️ Automatic mail bounce handling for MailPoet 3 to handle bounce emails easily when using your own SMTP server.
+Link: [Bounce Handler MailPoet 3 – WordPress plugin | WordPress.org](https://wordpress.org/plugins/bounce-handler-mailpoet/)
+
+➡️ Create MailPoet 3 newsletter subscribers from Gravity Form entries.
+Link: [Add-on Gravity Forms – MailPoet 3 – WordPress plugin | WordPress.org](https://wordpress.org/plugins/add-on-gravity-forms-mailpoet/)
 
 == Installation ==
 
@@ -103,8 +128,8 @@ There are 3 ways to install this plugin:
 
 = 1. The super easy way =
 1. In your WordPress dashboard, navigate to Plugins > Add New
-2. Search for `Contact Form 7 - MailPoet 3`
-3. Click on "install now" under "Contact Form 7 - MailPoet 3"
+2. Search for `Contact Form 7 – MailPoet 3`
+3. Click on "install now" under "Contact Form 7 – MailPoet 3"
 4. Activate the plugin
 
 = 2. The easy way =
@@ -145,5 +170,4 @@ After installing & activating the plugin it's time to set up your form.
 == Upgrade Notice ==
 
 = x.0.0 =
-* There are nothing else needed, than upgrading from the WordPress pluings screen.
-
+* There are nothing else needed, than upgrading from the WordPress plugins screen.
