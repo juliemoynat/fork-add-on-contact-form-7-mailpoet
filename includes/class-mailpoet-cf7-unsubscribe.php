@@ -58,7 +58,8 @@ class MailpoetSubscriptionUnsubscribe {
 		$tag_generator->add(
 			'mpunsub',
 			$this->__( 'MailPoet Unsubscribe' ),
-			array( $this, 'mailpoetsignup_tag_generator' )
+			array( $this, 'mailpoetsignup_tag_generator' ), 
+			array( 'version' => '2' )
 		);
 
 	} //End of admin_init

@@ -59,7 +59,8 @@ class MailpoetSubscriptionConsent {
 		$tag_generator->add(
 			'mpconsent',
 			$this->__( 'MailPoet Consent' ),
-			array( $this, 'mailpoetsignup_tag_generator' )
+			array( $this, 'mailpoetsignup_tag_generator' ), 
+			array( 'version' => '2' )
 		);
 
 	} //End of admin_init

@@ -333,7 +333,8 @@ if ( ! class_exists( 'MailPoet_CF7_Integration' ) ) {
 			$tag_generator->add(
 				'mailpoetsignup',
 				$this->__( 'Mailpoet Signup' ),
-				array( $this, 'mailpoetsignup_tag_generator' )
+				array( $this, 'mailpoetsignup_tag_generator' ), 
+				array( 'version' => '2' )
 			);
 		}//end admin_init()
 

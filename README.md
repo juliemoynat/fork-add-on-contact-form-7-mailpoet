@@ -8,7 +8,7 @@ It was made in order to fix some accessibility issues and to work with the [Cont
 
 Accessibility issues, Contact Form 7 compatibility and JavaScript compatibility have been improved.
 
-### 1. Compatibility of lists checkboxes with Contact Form 7
+### 1. Bug: compatibility of lists checkboxes with Contact Form 7
 
 The latest versions of Contact Form 7 have changed important things to make error messages work:
 
@@ -34,19 +34,23 @@ The latest versions of Contact Form 7 have changed important things to make erro
 - Remove `br` at the end of the `span`;
 - Close the hidden `input` tag.
 
-### 3. Unsubscribe checkbox
+### 3. Accessibility of unsubscribe checkbox
 
 - Add `for` attribute for the `label`;
 - Remove `br` at the end of the `span`;
 - Remove space between field and label.
 
-### 4. JavaScript compatibility (jQuery to Vanilla)
+### 4. Bug: JavaScript compatibility (jQuery to Vanilla)
 
 When scripts are minified, an error occurred with the jQuery code (“jQuery is undefined”). So it was required to transform it into Vanilla code in order to make it possible for users to subscribe to the lists they want.
 
 ### 5. Bug: people were subscribing to lists even if no checkbox is checked
 
 Add a condition so that values in the hidden field (`input[name="fieldVal"]`) are added only if checkboxes are checked by default.
+
+### 6. Bug: compatibility with Contact Form 7 6.0
+
+Add a parameter `array( 'version' => '2' )` for `$tag_generator`.
 
 ---
 
