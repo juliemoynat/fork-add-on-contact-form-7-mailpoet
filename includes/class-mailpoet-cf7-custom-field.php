@@ -45,7 +45,8 @@ class MailpoetCustomField {
 		$tag_generator->add(
 			'cf',
 			$this->__( 'MailPoet Custom field' ),
-			array( $this, 'mailpoetsignup_cf' )
+			array( $this, 'mailpoetsignup_cf' ), 
+			array( 'version' => '2' )
 		);
 
 	} //End of admin_init
